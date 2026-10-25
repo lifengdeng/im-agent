@@ -1,0 +1,43 @@
+# Local preparation, personal configuration and output
+.local/
+.work/
+outputs/
+runtime/
+state/
+sessions/
+snapshots/
+backups/
+logs/
+secrets/
+.env
+.env.*
+!.env.example
+!env.example
+
+# Credentials and generated data
+auth.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.log
+
+# Tooling
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+dist/
+build/
+*.egg-info/
+.DS_Store
+Thumbs.db

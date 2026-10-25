@@ -1,0 +1,123 @@
+name: Repository checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.11', '3.13']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Check committed source
+        run: python -B scripts/bootstrap.py check --head
+      - name: Test offline runtime and governance
+        run: python -B -m unittest discover -s tests -v
+      - name: Verify a history-free source root and newcomer quickstart without external services
+        shell: python
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          import io, json, os, pathlib, shutil, subprocess, sys, tarfile
+          root = pathlib.Path.cwd()
+          sys.path.insert(0, str(root))
+          from im_agent.processes import background_options
+          temporary = pathlib.Path(os.environ["RUNNER_TEMP"]) / "local-project-quickstart"
+          temporary.mkdir()
+          original_commit = os.environ["GITHUB_SHA"]
+          archive = subprocess.check_output(["git", "archive", "--format=tar", original_commit], **background_options())
+          root = temporary / "im-agent"
+          root.mkdir()
+          with tarfile.open(fileobj=io.BytesIO(archive)) as tree:
+              for member in tree:
+                  relative = pathlib.PurePosixPath(member.name)
+                  assert not relative.is_absolute() and ".." not in relative.parts and "\\" not in member.name
+                  assert member.isfile() or member.isdir()
+                  destination = root.joinpath(*relative.parts)
+                  if member.isdir():
+                      destination.mkdir(parents=True, exist_ok=True)
+                  else:
+                      destination.parent.mkdir(parents=True, exist_ok=True)
+                      destination.write_bytes(tree.extractfile(member).read())
+                      destination.chmod(member.mode & 0o777)
+          os.chdir(root)
+          def source_git(*args):
+              return subprocess.check_output(["git", "-C", str(root), *args], **background_options()).decode().strip()
+          source_git("init", "--template=", "--initial-branch=main", "-q")
+          source_git("config", "user.name", "Synthetic")
+          source_git("config", "user.email", "synthetic@example.test")
+          source_git("config", "commit.gpgsign", "false")
+          source_git("config", "core.autocrlf", "false")
+          subprocess.run([sys.executable, "-B", "scripts/bootstrap.py", "install-hooks"], check=True, **background_options())
+          source_git("add", ".")
+          source_git("commit", "-qm", "Initial synthetic source snapshot")
+          framework_commit = source_git("rev-parse", "HEAD")
+          assert source_git("rev-list", "--all", "--count") == "1"
+          assert source_git("remote") == ""
+          assert subprocess.run(["git", "cat-file", "-e", original_commit + "^{commit}"], capture_output=True, **background_options()).returncode != 0
+          subprocess.run([sys.executable, "-B", "scripts/bootstrap.py", "check", "--head"], check=True, **background_options())
+          project = temporary / "my-project"
+          shutil.copytree(root / "examples/local-project/project", project)
+          def git(*args):
+              return subprocess.check_output(["git", "-C", str(project), *args], **background_options()).decode().strip()
+          git("init", "-q")
+          git("config", "user.name", "Synthetic")
+          git("config", "user.email", "synthetic@example.test")
+          git("config", "commit.gpgsign", "false")
+          git("config", "core.autocrlf", "false")
+          git("add", "im_agent_project.py", "project.json")
+          git("commit", "-qm", "Synthetic independent project")
+          instance = temporary / "instance"
+          setup = [sys.executable, "-B", "scripts/init_instance.py"]
+          subprocess.run(setup + ["init", "--instance-dir", str(instance), "--defaults"], check=True, **background_options())
+          subprocess.run(setup + ["demo", "--instance-dir", str(instance), "--runtime", str(temporary / "builtin-runtime"), "--commit", framework_commit], check=True, **background_options())
+          assert not (instance / "instance.feishu.json").exists()
+          subprocess.run(setup + ["configure", "--instance-dir", str(instance), "--non-interactive", "--project-repository", str(project), "--project-definition", str(instance / "project-template/capabilities.json")], check=True, **background_options())
+          runtime = temporary / "runtime"
+          subprocess.run(setup + ["demo", "--instance-dir", str(instance), "--runtime", str(runtime), "--commit", framework_commit, "--selected-project", "--question", "检查工程版本和检查结果"], check=True, **background_options())
+          report = json.loads((runtime / "onboarding-report.json").read_text(encoding="utf-8"))
+          assert report["passed"] and report["project"] == "my-local-project" and report["reply_count"] == 1
+          assert report["real_model_calls"] == 0 and report["real_feishu_messages"] == 0
+          assert report["pairing_scope"] == "synthetic-only" and not report["live_authorization_created"]
+          assert "sample-notes" in report["result"] and "1/2" in report["result"]
+
+  feishu-sdk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.13'
+      - name: Install optional hash-locked SDK
+        run: python -m pip install --require-hashes -r requirements-feishu.lock
+      - name: Verify official SDK types without a connection
+        run: python -B -m unittest discover -s tests -p test_feishu_sdk.py -v
+      - name: Prepare an independent immutable offline example
+        run: python -B scripts/digital_twin.py prepare --instance examples/digital-twin/instance.example.json --runtime "$RUNNER_TEMP/twin" --commit "$GITHUB_SHA"
+      - name: Run two containers and the native host with synthetic Feishu only
+        shell: bash
+        run: |
+          set -euo pipefail
+          compose_file="$RUNNER_TEMP/twin/compose.json"
+          trap 'docker compose -f "$compose_file" down' EXIT
+          docker compose -f "$compose_file" up --build -d
+          worker_address=$(docker compose -f "$compose_file" port worker 8080)
+          python -B "$RUNNER_TEMP/twin/source/scripts/digital_twin.py" host --runtime "$RUNNER_TEMP/twin" --state "$RUNNER_TEMP/twin/host" --secrets "$RUNNER_TEMP/twin/secrets/host.json" --worker "http://$worker_address" --once
+          docker compose -f "$compose_file" wait transport
+          python -B "$RUNNER_TEMP/twin/source/scripts/digital_twin.py" status --runtime "$RUNNER_TEMP/twin"
+          python -B -c 'import json,os,pathlib; r=json.loads((pathlib.Path(os.environ["RUNNER_TEMP"])/"twin/transport/report.json").read_text()); assert r["passed"] and r["reply_count"] == 1 and r["real_feishu_messages"] == 0'

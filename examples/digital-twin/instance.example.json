@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "profile": "offline",
+  "identity": {"instance": "example-twin", "agent": "example-agent", "tenant": "example-tenant"},
+  "owner": "example-owner",
+  "persona": {"name": "示例分身", "instructions": "直接说明结果、依据和需要本人判断的事项。只使用注册能力；人格不改变事实和权限。"},
+  "actors": [
+    {"instance": "example-twin", "agent": "example-agent", "tenant": "example-tenant", "user": "example-colleague", "chat": "example-private-chat", "kind": "private"}
+  ],
+  "feishu": {"app_id": "example-app", "bot_open_id": "example-bot", "app_secret_env": "IM_AGENT_TEST_APP_SECRET"},
+  "planner": {"provider": "rules"}
+}

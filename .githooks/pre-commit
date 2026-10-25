@@ -1,0 +1,9 @@
+#!/bin/sh
+set -eu
+root="$(git rev-parse --show-toplevel)"
+python="$(git config --local --get im-agent.python || true)"
+if [ -z "$python" ]; then
+  echo "im-agent: run scripts/bootstrap.py install-hooks with Python 3 first" >&2
+  exit 1
+fi
+exec "$python" -B "$root/scripts/bootstrap.py" check --staged

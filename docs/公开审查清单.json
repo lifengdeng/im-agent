@@ -1,0 +1,801 @@
+{
+  "schema": 2,
+  "review_date": "2026-10-25",
+  "decision": "private_preparation_for_public_view_and_fork",
+  "owner_declaration": {
+    "copyright_owner": "repository_owner_individual",
+    "design": "personal",
+    "other_human_contributors": false,
+    "company_business_project_included": false,
+    "confirmation_source": "maintainer_statement",
+    "status": "confirmed_by_maintainer"
+  },
+  "publication_policy": {
+    "current_visibility": "private",
+    "project_license": null,
+    "additional_open_source_license_granted": false,
+    "intended_mode": "public_view_and_github_fork_only",
+    "publish_existing_development_history": false,
+    "publish_personal_email": false,
+    "future_commit_email": "github_id_based_noreply_repository_local",
+    "clean_public_release_root_required": true,
+    "public_release_executed": false,
+    "history_rewrite_executed": false,
+    "history_archive": "offline_private_backup",
+    "public_repository_name": "im-agent",
+    "additional_long_lived_github_archive_repository": false
+  },
+  "technical_provenance": {
+    "public_reference_text_files": 73,
+    "private_reference_repositories": 5,
+    "private_reference_text_files": 4073,
+    "oversize_files_skipped": 0,
+    "minimum_normalized_lines": 8,
+    "minimum_characters": 180,
+    "matched_blocks": 0,
+    "exact_function_ast_minimum_nodes": 100,
+    "exact_large_function_matches": 0,
+    "company_runtime_dependency_found": false,
+    "reference_repository_names_versions_and_paths": "private_evidence_only",
+    "comparison_scope": "reference check against current private checkouts; not a proof about every possible source"
+  },
+  "privacy_policy": {
+    "public_source_names": "generic project and instance descriptions",
+    "private_development_commits_refs_and_logs": "excluded_from_future_publication",
+    "personal_email_in_existing_private_history": "preserved_privately",
+    "historical_audit_records": "private_evidence_only"
+  },
+  "secret_scan": {
+    "tool": "gitleaks",
+    "version": "8.30.1",
+    "tool_distribution": {
+      "version": "8.30.1",
+      "url": "https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_darwin_arm64.tar.gz",
+      "sha256": "b40ab0ae55c505963e365f271a8d3846efbc170aa17f2607f13df610a9aeb6a5",
+      "checksum_asset_sha256": "sha256:061476c21adaf5441516f96f185c1a4706a83cd6329b9b38762271b3d4a52fae"
+    },
+    "confirmed_secret_leaks_in_last_private_audit": 0,
+    "raw_history_and_log_reports": "private_evidence_only",
+    "final_public_candidate_rescan_required": true
+  },
+  "files": [
+    {
+      "path": ".dockerignore",
+      "sha256": "89a96c7454271b5ed65ea0bfdb6cabc6cbe6d8f2cb5bc19c40d5a03a5a6f10d3"
+    },
+    {
+      "path": ".editorconfig",
+      "sha256": "c4b02d4b544db5b5ad6721d7d851eaf51375ba2eac8d1fb55f83627ee415b2bc"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "54bd4a6b99dc23470898ac91e39603484518d1cf5334ccff131a98d3125d56f4"
+    },
+    {
+      "path": ".githooks/pre-commit",
+      "sha256": "0d8ff681aec9d98b4eec7cbc4f85933de71da20d46fc589a9a0e42309c06d249"
+    },
+    {
+      "path": ".githooks/pre-push",
+      "sha256": "26c236e9d210dc0ecb8f0f960e7c250f6c30f18cfcde0dd39231bf48372916ee"
+    },
+    {
+      "path": ".github/workflows/check.yml",
+      "sha256": "8e9af30c84ac2c0f8243eba93fa129cb5db23b8bd1b47f3c59666533c8bfa70f"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "a1c4ab965726f241d9fd78b7fd987190a6868f05ea14f207145d337e20e9a80e"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "cd513c130e9599db2075dfe25af23e517256ad1c62c662f1252ff55eda123596"
+    },
+    {
+      "path": "DEPLOYMENT.md",
+      "sha256": "0e814ab75fd21e9c521e7669f64587cc6fecb875935067ebddfc282d37a323ab"
+    },
+    {
+      "path": "DEVELOPMENT.md",
+      "sha256": "65fed35021838b21bff98379d75c5b8bf1c990a32f963df96b23eee7d112a3d8"
+    },
+    {
+      "path": "README.md",
+      "sha256": "507bddd8c275d3c24ae8a94f7082bc2067878fc382e7164da15639710705a8f0"
+    },
+    {
+      "path": "config/offline-runtime.json",
+      "sha256": "232b08089168a71195eef62ef290e82a3cce66ff0548055fbce94e733f215f55"
+    },
+    {
+      "path": "config/windows-toolchain.json",
+      "sha256": "8f1e76c94709e9c3fdbd64a50280a66333d0fef6f8fd5034beeda52afe181251"
+    },
+    {
+      "path": "deploy/offline.Dockerfile",
+      "sha256": "72bece25a7b39ad33bd2ef74ec264222883a1ec4e42b0810606cef999a25e607"
+    },
+    {
+      "path": "deploy/twin.Dockerfile",
+      "sha256": "8096964a35f585a026006f56dc5acabeca47b881a9b82e7a5627c4cd3c419ef6"
+    },
+    {
+      "path": "docs/PC常驻离线部署.md",
+      "sha256": "66310c15de06629207b7a1eaa5dee2fef479e830a6ae2f3a5f7f3c780957bf38"
+    },
+    {
+      "path": "docs/Windows环境准备.md",
+      "sha256": "15be7b3c11c8ea3333a879d42f062d4062898b472836be3c3f4e01a32a3f5627"
+    },
+    {
+      "path": "docs/公开前审查.md",
+      "sha256": "b671fcd3607d4809db128ca893064b16fda67b7a7807408eace5f59cf72d1d91"
+    },
+    {
+      "path": "docs/初始化引导.md",
+      "sha256": "ad58d283910d773171c7935e9caa373950b64077c49dd8725f97a7914ec5a27b"
+    },
+    {
+      "path": "docs/实例接入清单.md",
+      "sha256": "d305c19c5f25c6ced1f32fad1414be7e5498cc394164913166fc4bb0dffd7e67"
+    },
+    {
+      "path": "docs/实施路线图.md",
+      "sha256": "939a2cf9772be6e83f6fda5a6eb9ff58f1aca9ba67720b2ce8a019a5c513f3b3"
+    },
+    {
+      "path": "docs/数字分身示例.md",
+      "sha256": "ba956c7473e040f969245a3223bde4d23f2c1d37ff0d13e1c7d175143b9026a1"
+    },
+    {
+      "path": "docs/数字分身能力边界.md",
+      "sha256": "b8be23f81372f9fc3f35032fe68eeeaa6662709896cf4941d7581c7db247e661"
+    },
+    {
+      "path": "docs/本地工程接入.md",
+      "sha256": "09335a97773459d7e396d397cb5a84b3f73071e00624d7f1dc95e0cd811521d8"
+    },
+    {
+      "path": "docs/架构决策.md",
+      "sha256": "cf560751908d93897339cb243bf3710d87147743d20b478143577a7cfd3db268"
+    },
+    {
+      "path": "docs/治理检查.md",
+      "sha256": "36d8ae42c54c8d782511aafaaa3e2141f8eb773a3ab1f8c2fb056a7e69eef866"
+    },
+    {
+      "path": "docs/离线候选.md",
+      "sha256": "12d7e8b5e59c23e59dedfd7127b44601d94e8ab536169a2cbb50c5aeedf5b8ca"
+    },
+    {
+      "path": "docs/维护与发布.md",
+      "sha256": "ed7330f955eb41c6aa983ffb5ef8f6964c4863d4f1ddeb620717114d1b4f4824"
+    },
+    {
+      "path": "examples/digital-twin/instance.example.json",
+      "sha256": "aa20f342124c6063ad69412a6de24aaf73dbee2ea4ad77f06bb62e04f823bc30"
+    },
+    {
+      "path": "examples/digital-twin/message.example.json",
+      "sha256": "bf1fcea479461df8c0f710b7d91b3eeb56a5bb518a38bbe9088914c30137beba"
+    },
+    {
+      "path": "examples/digital-twin/project/inspect_release.py",
+      "sha256": "578f73cf012fd0612b507423e2f9973fb7142239010e4a96a29137a343c8d321"
+    },
+    {
+      "path": "examples/digital-twin/project/releases.json",
+      "sha256": "24e5458fb08e2b2ab05e2d51d7b212c1b70647d19ff5b3bc5a0c8fa62a87c425"
+    },
+    {
+      "path": "examples/local-project/instance.example.json",
+      "sha256": "5fa14e08bff3836b5f9e22f5a30316f49b1fa3b49f53b913553edb85fb1d608a"
+    },
+    {
+      "path": "examples/local-project/project/im_agent_project.py",
+      "sha256": "0a9bd43c14363afaa4b12c71b557af052b53e6171a13c90c4387c0e9185a39e2"
+    },
+    {
+      "path": "examples/local-project/project/project.json",
+      "sha256": "52dacce593ae674117f68a554bd6e8a5ef1c0fe41aa0607f0642fe5421185016"
+    },
+    {
+      "path": "im_agent/__init__.py",
+      "sha256": "f86cec07148c62a23391173a52c042c9b93b97053ac94c6c8f0d6180b488f118"
+    },
+    {
+      "path": "im_agent/adapters.py",
+      "sha256": "b32a027e9482edac92260e9adda7563813b31ba24bcb48523241655883fb2047"
+    },
+    {
+      "path": "im_agent/bundles.py",
+      "sha256": "46d690b2d1f6e06756e6d50e68b081309847ef8f3eee867a72a4662cc3241880"
+    },
+    {
+      "path": "im_agent/codex.py",
+      "sha256": "2b67d0523b311b519bc7c52058617a33c1c45b17283002c27134e42039823bb2"
+    },
+    {
+      "path": "im_agent/contracts.py",
+      "sha256": "d5ef2a87abae47668ec2ee34cfab29fd53fa2b6a08b63ce99c5b6723882bb3fe"
+    },
+    {
+      "path": "im_agent/delivery.py",
+      "sha256": "f485a57f1477b684201acece3ebecbba4e0f86bc9d6c1ee3295442ebe8259686"
+    },
+    {
+      "path": "im_agent/feishu.py",
+      "sha256": "2cfa7077fbe1e36a93d4e4f5ba6bbeb150274dd9d71887b2b0d1ef6ccb3a913b"
+    },
+    {
+      "path": "im_agent/feishu_fixture.py",
+      "sha256": "24b2f0bba8735dc870ea23786079f3c2618426072f13fa62968c1da0e0966bd3"
+    },
+    {
+      "path": "im_agent/intake.py",
+      "sha256": "9955f25ae32f9389be4fdbf69b8d62c1f1f6b6d21971251dd9900c15b741ffeb"
+    },
+    {
+      "path": "im_agent/ledger.py",
+      "sha256": "af78c1f4d3d833505950c2e00d11864520d3ad874c54504020bd9200b9cb8d28"
+    },
+    {
+      "path": "im_agent/memory.py",
+      "sha256": "cfd204482e5768975326447e55950797ac6611d10deb6a7d4a2e9abca2ce0339"
+    },
+    {
+      "path": "im_agent/offline_network.py",
+      "sha256": "260b155e96f24cbdf804c8cf5ca278ecc42c2c447082ea0e3eddaf336e02caa5"
+    },
+    {
+      "path": "im_agent/onboarding.py",
+      "sha256": "bca9b5ad8987fb2950b782a37624dc994a7cdb45f54ab7fc7ab41f48c9f144c1"
+    },
+    {
+      "path": "im_agent/processes.py",
+      "sha256": "c95335aaa1afda3d10affe97ed2d60e7c54a57ab000b0ba54f10ed21bfec508e"
+    },
+    {
+      "path": "im_agent/resident.py",
+      "sha256": "4558d4af4ccff1ac2bda4c30f81d425bdaa71a0be61f1ad40c25ec935e5b871e"
+    },
+    {
+      "path": "im_agent/service.py",
+      "sha256": "6971b88bf64350e619d5f51e94685559bbe12c1e8df2b4faf9a9e2abd96bcdf2"
+    },
+    {
+      "path": "im_agent/snapshot.py",
+      "sha256": "5daba5fe171ae3ced0a474d7f1c7394c23c3f29b6359dfe8779a12755fa58324"
+    },
+    {
+      "path": "im_agent/twin.py",
+      "sha256": "de2646a3d3967f42cfe51af916704b54ac47c291f2e05491f1cfebe125107d2e"
+    },
+    {
+      "path": "im_agent/twin_config.py",
+      "sha256": "ec79739dabc34cd7e8448215db34a94b5729b444966d4a1211a3dd1d293f1d05"
+    },
+    {
+      "path": "im_agent/twin_planner.py",
+      "sha256": "fec24039a677adbbe74a70ab6b05b95fa2102b6cca90814efd59d7d49cac8101"
+    },
+    {
+      "path": "im_agent/twin_project.py",
+      "sha256": "3c81ac85133106504cba5fa9190eb6a241ccfc085164bc1323a1dea17965d0cb"
+    },
+    {
+      "path": "im_agent/validation.py",
+      "sha256": "54c7d22ee76f5c19cd6bc58fa9d0adf1adfa7db4276f10e5cf0b043ff512282a"
+    },
+    {
+      "path": "requirements-feishu.lock",
+      "sha256": "030d84c171a71c61f2e4a8c207c9fcbf471cd366af64d8547178762b8f85335e"
+    },
+    {
+      "path": "scripts/bootstrap.py",
+      "sha256": "72dc96d529be4ed78d767e841765600084164048e01f678f365dbd3817cf2629"
+    },
+    {
+      "path": "scripts/check_background_windows.py",
+      "sha256": "6a9acbfa74a802715ba9be78fe2f570858bbb09d2a42bc45e84fc393b50d7ff1"
+    },
+    {
+      "path": "scripts/digital_twin.py",
+      "sha256": "73f637f370e0ed44ef6dae96e2e85fbce1ab2bf2b8d0876d0a44cf2d534c53c3"
+    },
+    {
+      "path": "scripts/init_instance.py",
+      "sha256": "fc1554a323698d4865f24a179414d707c17d0d6ab59d2b8075bc173650de5284"
+    },
+    {
+      "path": "scripts/offline_pc.py",
+      "sha256": "3476dfdcd0c0f4244268ea0da21b2ebe568d5d1eddde6fa3f2cc3ee0d5a3c401"
+    },
+    {
+      "path": "scripts/project_checks.py",
+      "sha256": "b206c6256162496499465ae264fed6f310462d0e3526e07697be4975a86d3bad"
+    },
+    {
+      "path": "scripts/recover_resident.ps1",
+      "sha256": "77dc81374ee05007473f842be0278794ae6ac42c71e08b0f58505d61a779eda4"
+    },
+    {
+      "path": "scripts/register_resident.ps1",
+      "sha256": "d6e322e4217f236952449fa7bcc9befe8a0e53ebda79ee2d0ff401b19332f5c6"
+    },
+    {
+      "path": "scripts/resident_pc.py",
+      "sha256": "79c9ba8ffbd44dd56428c6744f1d68019209ffc15695256fa27cb7aba23c938c"
+    },
+    {
+      "path": "scripts/resident_verify.py",
+      "sha256": "65b291348fa3dcb30d4e19accc082c8ec0358477c4003cb65f6c0558b176fd4c"
+    },
+    {
+      "path": "scripts/windows_environment.py",
+      "sha256": "cb9523b5347f1b72c30356b38e806cac078e0ca93b971bc9e08181ece36ccb8f"
+    },
+    {
+      "path": "tests/fixtures/background_parent.py",
+      "sha256": "fb8a265ace8d9a69d087b4c3419845906bd2551a49993e9e76f13057af6cb699"
+    },
+    {
+      "path": "tests/fixtures/fake_codex.py",
+      "sha256": "e354d9f6f751d37404a0b57dce42c14c24132cbbe9c31e97d62a763ba1778265"
+    },
+    {
+      "path": "tests/test_adapters.py",
+      "sha256": "23032aa61f52b5f5851d766e7166a45e342034e3073af64e60d1e502d87f307e"
+    },
+    {
+      "path": "tests/test_bundles.py",
+      "sha256": "b4f9a7dacf842a5df87eb705cda4b5715284256efe46851426008eefa6133056"
+    },
+    {
+      "path": "tests/test_codex.py",
+      "sha256": "8714c9df6e408efe5500273c55db960a200c121292bfc6796a70752dc378238e"
+    },
+    {
+      "path": "tests/test_digital_twin.py",
+      "sha256": "4a82bddd7f41dca6087e5380aee034fc5bd4a4eec8aac9d3747bab35f908099d"
+    },
+    {
+      "path": "tests/test_feishu_sdk.py",
+      "sha256": "e46c6265c2447d6e23fe74c5d86f1e2d05468681dc0395df54ac989d2f43450b"
+    },
+    {
+      "path": "tests/test_governance.py",
+      "sha256": "06574cd45b2ef9789924e03a73310049ada6ebb3eea79599229efd0a65608676"
+    },
+    {
+      "path": "tests/test_local_project.py",
+      "sha256": "31d4cdad87bdbb2d4b87f9a73f31185a0942cedf1cfa4d6ab2e2f66677ab4b60"
+    },
+    {
+      "path": "tests/test_offline_network.py",
+      "sha256": "431624d83322d5bd71b8496cf535df446c7954406b469838eddfa832b9174051"
+    },
+    {
+      "path": "tests/test_offline_package.py",
+      "sha256": "2910ce1e68bf82e0745b5a412543b7ddc512277f61b5fde4d123a7fc4d2d04d9"
+    },
+    {
+      "path": "tests/test_onboarding.py",
+      "sha256": "f86495fbe5cba9f9b10a2b9bffe5cd86f9703beb3fb8a95d4bfdb821177c00e3"
+    },
+    {
+      "path": "tests/test_processes.py",
+      "sha256": "fed092b4d28a96374e8faec8aa047ab7de9373929ba9038f659de44f60068c9f"
+    },
+    {
+      "path": "tests/test_resident.py",
+      "sha256": "ee4d0d73f430b529ce1911d13d0ac68d97ea93a67f47c4560feaff33f19b1d78"
+    },
+    {
+      "path": "tests/test_resident_release.py",
+      "sha256": "e7bf1bea95939015a21503d26fb6001c6675cd95a030be18ca05a53e9f667a8a"
+    },
+    {
+      "path": "tests/test_runtime.py",
+      "sha256": "2bc6dcec46d35c914d982aeba1f45e2f37e7182c475d2118c714b0981f57e732"
+    },
+    {
+      "path": "tests/test_snapshot.py",
+      "sha256": "a57b67caf1211a923cd2a93a8a07365dc153ad5c3a9b735f6ce2ec22080a5559"
+    },
+    {
+      "path": "tests/test_twin_model.py",
+      "sha256": "2e44c1f7aaf8f4b45cfad96db41ee77a1a2b4b88bcf97406f5813d47a4f14d5c"
+    },
+    {
+      "path": "tests/test_windows_environment.py",
+      "sha256": "805245ba1bd4d3bf48b27565c95764e48cc990475585671d32b5f2dd229f82c8"
+    }
+  ],
+  "file_inventory_scope": "current candidate file hashes excluding this self-describing manifest; private Git history and introduction commits omitted",
+  "python_dependencies": [
+    {
+      "name": "anyio",
+      "version": "4.15.1",
+      "wheel": "anyio-4.15.1-py3-none-any.whl",
+      "wheel_sha256": "6152fdbbf9a77fdec97731721bebf7c4c44f7c29b424b0065826173efc7ed101",
+      "license_files": [
+        {
+          "path": "anyio-4.15.1.dist-info/licenses/LICENSE",
+          "sha256": "5361ac9dc58f2ef5fd2e9b09c68297c17f04950909bbc8023bdb82eacf22c2b0"
+        }
+      ],
+      "source_urls": [
+        "Documentation, https://anyio.readthedocs.io/en/latest/",
+        "Changelog, https://anyio.readthedocs.io/en/stable/versionhistory.html",
+        "Source code, https://github.com/agronholm/anyio",
+        "Issue tracker, https://github.com/agronholm/anyio/issues"
+      ],
+      "package_url": "https://pypi.org/project/anyio/4.15.1/",
+      "license_expression": "MIT"
+    },
+    {
+      "name": "certifi",
+      "version": "2026.10.19",
+      "wheel": "certifi-2026.10.19-py3-none-any.whl",
+      "wheel_sha256": "42d35340cc5b9ba78e818ddbff0c5b1c2b779de448a340fd1b989f5fa8670e1b",
+      "license_files": [
+        {
+          "path": "certifi-2026.10.19.dist-info/licenses/LICENSE",
+          "sha256": "e93716da6b9c0d5a4a1df60fe695b370f0695603d21f6f83f053e42cfc10caf7"
+        }
+      ],
+      "source_urls": [
+        "Source, https://github.com/certifi/python-certifi"
+      ],
+      "package_url": "https://pypi.org/project/certifi/2026.10.19/",
+      "license_expression": "MPL-2.0"
+    },
+    {
+      "name": "charset-normalizer",
+      "version": "3.5.2",
+      "wheel": "charset_normalizer-3.5.2-cp313-cp313-macosx_10_13_universal2.whl",
+      "wheel_sha256": "6045373d5a89a5ec71afde535db987ca28e76dfa276c2d4c818265b375d4b055",
+      "license_files": [
+        {
+          "path": "charset_normalizer-3.5.2.dist-info/licenses/LICENSE",
+          "sha256": "6d0d41bfe170ac6c7dc248c9a63e254d0fb45a60d50a8257d0af92c6e249b887"
+        }
+      ],
+      "source_urls": [
+        "Changelog, https://github.com/jawah/charset_normalizer/blob/master/CHANGELOG.md",
+        "Documentation, https://charset-normalizer.readthedocs.io/",
+        "Code, https://github.com/jawah/charset_normalizer",
+        "Issue tracker, https://github.com/jawah/charset_normalizer/issues"
+      ],
+      "package_url": "https://pypi.org/project/charset-normalizer/3.5.2/",
+      "license_expression": "MIT"
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0",
+      "wheel": "h11-0.16.0-py3-none-any.whl",
+      "wheel_sha256": "63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86",
+      "license_files": [
+        {
+          "path": "h11-0.16.0.dist-info/licenses/LICENSE.txt",
+          "sha256": "37db5bb85926db28a427a25867f10b1232003aea1be69ccb851138adb8e6f361"
+        }
+      ],
+      "source_urls": [],
+      "package_url": "https://pypi.org/project/h11/0.16.0/",
+      "license_expression": "MIT"
+    },
+    {
+      "name": "httpcore",
+      "version": "1.0.9",
+      "wheel": "httpcore-1.0.9-py3-none-any.whl",
+      "wheel_sha256": "2d400746a40668fc9dec9810239072b40b4484b640a8c38fd654a024c7a1bf55",
+      "license_files": [
+        {
+          "path": "httpcore-1.0.9.dist-info/licenses/LICENSE.md",
+          "sha256": "fdcb59154c74cbaba16a11242f7740bea9f23d6feb5547917d8c5f94a80392a5"
+        }
+      ],
+      "source_urls": [
+        "Documentation, https://www.encode.io/httpcore",
+        "Homepage, https://www.encode.io/httpcore/",
+        "Source, https://github.com/encode/httpcore"
+      ],
+      "package_url": "https://pypi.org/project/httpcore/1.0.9/",
+      "license_expression": "BSD-3-Clause"
+    },
+    {
+      "name": "httpx",
+      "version": "0.28.1",
+      "wheel": "httpx-0.28.1-py3-none-any.whl",
+      "wheel_sha256": "d909fcccc110f8c7faf814ca82a9a4d816bc5a6dbfea25d6591d6985b8ba59ad",
+      "license_files": [
+        {
+          "path": "httpx-0.28.1.dist-info/licenses/LICENSE.md",
+          "sha256": "4ec59d544f12b5f539a3a716fd321ac58ccd8030b465221f2c880200cdf28d8d"
+        }
+      ],
+      "source_urls": [
+        "Changelog, https://github.com/encode/httpx/blob/master/CHANGELOG.md",
+        "Documentation, https://www.python-httpx.org",
+        "Homepage, https://github.com/encode/httpx",
+        "Source, https://github.com/encode/httpx"
+      ],
+      "package_url": "https://pypi.org/project/httpx/0.28.1/",
+      "license_expression": "BSD-3-Clause"
+    },
+    {
+      "name": "idna",
+      "version": "3.20",
+      "wheel": "idna-3.20-py3-none-any.whl",
+      "wheel_sha256": "ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c",
+      "license_files": [
+        {
+          "path": "idna-3.20.dist-info/licenses/LICENSE.md",
+          "sha256": "1a9a4f0e3d479a27240ddd59a9137a66ab4a0f9dfdc8ca6188cc0bfd85187f04"
+        }
+      ],
+      "source_urls": [
+        "Changelog, https://github.com/kjd/idna/blob/master/HISTORY.md",
+        "Issue tracker, https://github.com/kjd/idna/issues",
+        "Source, https://github.com/kjd/idna"
+      ],
+      "package_url": "https://pypi.org/project/idna/3.20/",
+      "license_expression": "BSD-3-Clause"
+    },
+    {
+      "name": "lark-oapi",
+      "version": "1.7.4",
+      "wheel": "lark_oapi-1.7.4-py3-none-any.whl",
+      "wheel_sha256": "7b39f7a862faecc94e574df21ad668b8aa005a3f5caa6e4580d05139a72c84e2",
+      "license_files": [
+        {
+          "path": "lark_oapi-1.7.4.dist-info/licenses/LICENSE",
+          "sha256": "376660213aca675cae7ea55d7e6af88b130fa78a89fe5cbed7f61e0acdf0f949"
+        }
+      ],
+      "source_urls": [
+        "Source, https://github.com/larksuite/oapi-sdk-python"
+      ],
+      "package_url": "https://pypi.org/project/lark-oapi/1.7.4/",
+      "license_expression": "MIT"
+    },
+    {
+      "name": "pycryptodome",
+      "version": "4.1.0",
+      "wheel": "pycryptodome-4.1.0-cp39-abi3-macosx_10_9_universal2.whl",
+      "wheel_sha256": "1c3a054ab2552f25a941d6cd6380d9c0618ad0274f48773407b6bf5cd37bc90f",
+      "license_files": [
+        {
+          "path": "pycryptodome-4.1.0.dist-info/licenses/LICENSE.rst",
+          "sha256": "2e066558628eb4d6b28b72cc1471dc3aba02cecb2f962e40aa049c6460e20858"
+        },
+        {
+          "path": "pycryptodome-4.1.0.dist-info/licenses/src/mldsa-native/LICENSE",
+          "sha256": "22f7173776d0a36d3f13ec1f45d51e0502e67d17e384bddf39690d833974ff93"
+        }
+      ],
+      "source_urls": [
+        "Homepage, https://www.pycryptodome.org",
+        "Source, https://github.com/Legrandin/pycryptodome/",
+        "Changelog, https://www.pycryptodome.org/src/changelog"
+      ],
+      "package_url": "https://pypi.org/project/pycryptodome/4.1.0/",
+      "license_expression": "BSD-2-Clause AND Unlicense AND MIT"
+    },
+    {
+      "name": "requests",
+      "version": "2.34.2",
+      "wheel": "requests-2.34.2-py3-none-any.whl",
+      "wheel_sha256": "2a0d60c172f83ac6ab31e4554906c0f3b3588d37b5cb939b1c061f4907e278e0",
+      "license_files": [
+        {
+          "path": "requests-2.34.2.dist-info/licenses/LICENSE",
+          "sha256": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b"
+        },
+        {
+          "path": "requests-2.34.2.dist-info/licenses/NOTICE",
+          "sha256": "f5110972dedad2b4e9d314518daf3b7d72d6e02e499acd802181de6f74571dcc"
+        }
+      ],
+      "source_urls": [
+        "Documentation, https://requests.readthedocs.io",
+        "Source, https://github.com/psf/requests"
+      ],
+      "package_url": "https://pypi.org/project/requests/2.34.2/",
+      "license_expression": "Apache-2.0"
+    },
+    {
+      "name": "requests-toolbelt",
+      "version": "1.0.0",
+      "wheel": "requests_toolbelt-1.0.0-py2.py3-none-any.whl",
+      "wheel_sha256": "cccfdd665f0a24fcf4726e690f65639d272bb0637b9b92dfd91a5568ccf6bd06",
+      "license_files": [
+        {
+          "path": "requests_toolbelt-1.0.0.dist-info/AUTHORS.rst",
+          "sha256": "57df198f62c9098aac95c9b8ec1f0b8efc024080f61d5a0ed89ef4c5da3cf031"
+        },
+        {
+          "path": "requests_toolbelt-1.0.0.dist-info/LICENSE",
+          "sha256": "1f8cf8bdacd98ed6d36d0fec0c07f7765acebd6e81205962ab5146023b3c858d"
+        }
+      ],
+      "source_urls": [
+        "Changelog, https://github.com/requests/toolbelt/blob/master/HISTORY.rst",
+        "Source, https://github.com/requests/toolbelt"
+      ],
+      "package_url": "https://pypi.org/project/requests-toolbelt/1.0.0/",
+      "license_expression": "Apache-2.0"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "wheel": "typing_extensions-4.16.0-py3-none-any.whl",
+      "wheel_sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+      "license_files": [
+        {
+          "path": "typing_extensions-4.16.0.dist-info/licenses/LICENSE",
+          "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
+        }
+      ],
+      "source_urls": [
+        "Bug Tracker, https://github.com/python/typing_extensions/issues",
+        "Changes, https://github.com/python/typing_extensions/blob/main/CHANGELOG.md",
+        "Documentation, https://typing-extensions.readthedocs.io/",
+        "Home, https://github.com/python/typing_extensions",
+        "Q & A, https://github.com/python/typing/discussions",
+        "Repository, https://github.com/python/typing_extensions"
+      ],
+      "package_url": "https://pypi.org/project/typing_extensions/4.16.0/",
+      "license_expression": "PSF-2.0"
+    },
+    {
+      "name": "urllib3",
+      "version": "2.8.0",
+      "wheel": "urllib3-2.8.0-py3-none-any.whl",
+      "wheel_sha256": "0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3",
+      "license_files": [
+        {
+          "path": "urllib3-2.8.0.dist-info/licenses/LICENSE.txt",
+          "sha256": "130e3a64d5fdd5d096a752694634a7d9df284469de86e5732100268041e3d686"
+        }
+      ],
+      "source_urls": [
+        "Changelog, https://github.com/urllib3/urllib3/blob/main/CHANGES.rst",
+        "Documentation, https://urllib3.readthedocs.io",
+        "Code, https://github.com/urllib3/urllib3",
+        "Issue tracker, https://github.com/urllib3/urllib3/issues",
+        "Security policy, https://urllib3.readthedocs.io/en/latest/security.html"
+      ],
+      "package_url": "https://pypi.org/project/urllib3/2.8.0/",
+      "license_expression": "MIT"
+    },
+    {
+      "name": "websockets",
+      "version": "15.0.1",
+      "wheel": "websockets-15.0.1-cp313-cp313-macosx_11_0_arm64.whl",
+      "wheel_sha256": "746ee8dba912cd6fc889a8147168991d50ed70447bf18bcda7039f7d2e3d9151",
+      "license_files": [
+        {
+          "path": "websockets-15.0.1.dist-info/LICENSE",
+          "sha256": "3d6a0c050d8bec52fabad502e45fb25bd02bcadbd70dea34d447b6a0ff4e6da8"
+        }
+      ],
+      "source_urls": [
+        "Homepage, https://github.com/python-websockets/websockets",
+        "Changelog, https://websockets.readthedocs.io/en/stable/project/changelog.html",
+        "Documentation, https://websockets.readthedocs.io/",
+        "Funding, https://tidelift.com/subscription/pkg/pypi-websockets?utm_source=pypi-websockets&utm_medium=referral&utm_campaign=readme",
+        "Tracker, https://github.com/python-websockets/websockets/issues"
+      ],
+      "package_url": "https://pypi.org/project/websockets/15.0.1/",
+      "license_expression": "BSD-3-Clause"
+    }
+  ],
+  "external_tools": [
+    {
+      "name": "codex-license",
+      "status": "obtained",
+      "ref": "rust-v0.162.1",
+      "url": "https://github.com/openai/codex/blob/rust-v0.162.1/LICENSE",
+      "blob_sha": "4606e72e042564097e8780d66c1d4dcb611869bd",
+      "sha256": "d17f227e4df5da1600391338865ce0f3055211760a36688f816941d58232d8dc",
+      "first_nonblank_lines": [
+        "Apache License",
+        "Version 2.0, January 2004"
+      ]
+    },
+    {
+      "name": "codex-notice",
+      "status": "obtained",
+      "ref": "rust-v0.162.1",
+      "url": "https://github.com/openai/codex/blob/rust-v0.162.1/NOTICE",
+      "blob_sha": "2805899d56d0332d175cfc613c67d45d6f006db7",
+      "sha256": "9d71575ecfd9a843fc1677b0efb08053c6ba9fd686a0de1a6f5382fd3c220915",
+      "first_nonblank_lines": [
+        "OpenAI Codex",
+        "Copyright 2025 OpenAI"
+      ]
+    },
+    {
+      "name": "wsl-license",
+      "status": "obtained",
+      "ref": "3.0.3",
+      "url": "https://github.com/microsoft/WSL/blob/3.0.3/LICENSE",
+      "blob_sha": "9e841e7a26e4eb057b24511e7b92d42b257a80e5",
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "first_nonblank_lines": [
+        "MIT License",
+        "Copyright (c) Microsoft Corporation."
+      ]
+    },
+    {
+      "name": "checkout-license",
+      "status": "obtained",
+      "ref": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "url": "https://github.com/actions/checkout/blob/3d3c42e5aac5ba805825da76410c181273ba90b1/LICENSE",
+      "blob_sha": "a67dca8b4f65d6bd351f6b1e333ce2cd84d843a5",
+      "sha256": "3e855ffa704114a51628ef8f0bf3aeb41728adf9d9070e263bf58aa5640b0eb5",
+      "first_nonblank_lines": [
+        "The MIT License (MIT)",
+        "Copyright (c) 2018 GitHub, Inc. and contributors"
+      ]
+    },
+    {
+      "name": "setup-python-license",
+      "status": "obtained",
+      "ref": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+      "url": "https://github.com/actions/setup-python/blob/6d4fd22b20465ccc0f7354476588e8df7c9ca0e0/LICENSE",
+      "blob_sha": "a426ef259d6c5d705e9c1405075c3b318093c65e",
+      "sha256": "7d070f6b64d9bcc530fe99cc21eaaa4b3c364e0b2d367d7735671fa202a03b32",
+      "first_nonblank_lines": [
+        "The MIT License (MIT)",
+        "Copyright (c) 2018 GitHub, Inc. and contributors"
+      ]
+    },
+    {
+      "name": "python-container-source-license",
+      "status": "obtained",
+      "ref": "master",
+      "url": "https://github.com/docker-library/python/blob/master/LICENSE",
+      "blob_sha": "fbab368db562ae869e297da8a9a430afca076cde",
+      "sha256": "0a3ffdfc4f368b76ae1140b5fbe2f2f69ee76ee00a3024e8a09ca9b2e265186f",
+      "first_nonblank_lines": [
+        "Copyright (c) 2014 Docker, Inc.",
+        "Permission is hereby granted, free of charge, to any person obtaining"
+      ]
+    }
+  ],
+  "distribution_scope": {
+    "third_party_notices_retained": true,
+    "all_platform_wheels_examined": false,
+    "full_base_image_sbom_completed": false,
+    "binary_distribution_selected": false
+  },
+  "pending_publication_work": [
+    "verify_offline_old_sha_retrieval_and_instance_transition_compatibility",
+    "archive_remote_surfaces_with_explicit_coverage_gaps_before_rebuild",
+    "explicit_same_name_remote_rebuild_and_publication_authorization"
+  ],
+  "non_actions": [
+    "no_visibility_change",
+    "no_history_rewrite",
+    "no_private_instance_changes",
+    "no_production_operations",
+    "no_real_messages_or_model_calls"
+  ],
+  "conditional_publication_work": {
+    "reuse_existing_remote": "history_rewrite_alone_does_not_remove_server_cached_commits_or_ancillary_records"
+  },
+  "source_snapshot_policy": {
+    "development_history_included": false,
+    "archive_contains_git_metadata": false,
+    "git_archive_commit_comment_included": false,
+    "archive_metadata_normalized": true,
+    "new_root_uses_noreply": true,
+    "local_candidate_has_no_remote": true,
+    "license_added": false,
+    "binary_distribution_included": false
+  }
+}

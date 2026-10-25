@@ -1,0 +1,4 @@
+[
+  {"version": "0.1.0", "traffic_percent": 10, "change": "小范围灰度"},
+  {"version": "0.2.0", "traffic_percent": 100, "change": "扩大示例功能流量"}
+]

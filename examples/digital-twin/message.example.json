@@ -1,0 +1,8 @@
+{
+  "schema": "2.0",
+  "header": {"event_id": "synthetic-event", "event_type": "im.message.receive_v1", "app_id": "example-app", "tenant_key": "example-tenant"},
+  "event": {
+    "sender": {"sender_type": "user", "sender_id": {"open_id": "example-colleague"}, "tenant_key": "example-tenant"},
+    "message": {"message_id": "om_example_question", "chat_id": "example-private-chat", "chat_type": "p2p", "message_type": "text", "content": "{\"text\":\"检查示例项目最近一次发布\"}"}
+  }
+}
