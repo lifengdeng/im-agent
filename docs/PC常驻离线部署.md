@@ -6,9 +6,9 @@
 
 实例的 `instance-release.json` 通过 `native_adapter_factory` 声明宿主适配器工厂，通过 `offline_resident_verifier` 声明离线验收入口；二者只能来自固定私有 Git 导出中的相对 Python 文件。工程名称、业务样例与查询结果断言放在私有实例，公共部署器不固化它们。使用者接入工程时实现相同工厂/验收协议即可。
 
-## Mac → Git → PC
+## 准备并启动
 
-在 Mac 开发、测试、提交并推送。实例的 `instance-release.json.framework_commit` 必须指向已提交框架版本。PC 只通过 Git 更新，保留所有现场改动。
+在开发环境修改、测试、提交并推送。实例的 `instance-release.json.framework_commit` 必须指向已提交框架版本。PC 只通过 Git 更新，保留所有现场改动。
 
 ```powershell
 py -3.11 -B scripts/resident_pc.py prepare --runtime-root <独立运行根> --private-source <私有实例检出> --native-project <既有工程> --commit <框架完整SHA> --instance-commit <实例完整SHA>

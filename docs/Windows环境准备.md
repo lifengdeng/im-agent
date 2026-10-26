@@ -40,7 +40,7 @@ py -3.11 -B scripts/windows_environment.py status --runtime-root $runtimeRoot
 & "$runtimeRoot\bin\codex-agent.cmd" login status
 ```
 
-登录由本人完成；无需在聊天中提供凭据、验证码或认证文件。准备完成不代表已登录、Windows 沙箱已验收或已做模型调用。独立目录用于区分配置和登录态；当前仍由同一 Windows 用户运行，完整系统权限隔离属于后续本机执行器设计。
+登录由本人完成；无需在聊天中提供凭据、验证码或认证文件。工具安装与账号登录分别进行。独立目录隔离配置和登录态；进程仍以当前 Windows 用户运行，不提供额外的操作系统账号或权限隔离。
 
 ## Docker 与 WSL
 

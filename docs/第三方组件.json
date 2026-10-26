@@ -1,0 +1,352 @@
+{
+  "schema": 1,
+  "python_dependency_lock": "requirements-feishu.lock",
+  "python_dependencies": [
+    {
+      "name": "anyio",
+      "version": "4.15.1",
+      "wheel": "anyio-4.15.1-py3-none-any.whl",
+      "wheel_sha256": "6152fdbbf9a77fdec97731721bebf7c4c44f7c29b424b0065826173efc7ed101",
+      "license_files": [
+        {
+          "path": "anyio-4.15.1.dist-info/licenses/LICENSE",
+          "sha256": "5361ac9dc58f2ef5fd2e9b09c68297c17f04950909bbc8023bdb82eacf22c2b0"
+        }
+      ],
+      "source_urls": [
+        "Documentation, https://anyio.readthedocs.io/en/latest/",
+        "Changelog, https://anyio.readthedocs.io/en/stable/versionhistory.html",
+        "Source code, https://github.com/agronholm/anyio",
+        "Issue tracker, https://github.com/agronholm/anyio/issues"
+      ],
+      "package_url": "https://pypi.org/project/anyio/4.15.1/",
+      "license_expression": "MIT"
+    },
+    {
+      "name": "certifi",
+      "version": "2026.10.19",
+      "wheel": "certifi-2026.10.19-py3-none-any.whl",
+      "wheel_sha256": "42d35340cc5b9ba78e818ddbff0c5b1c2b779de448a340fd1b989f5fa8670e1b",
+      "license_files": [
+        {
+          "path": "certifi-2026.10.19.dist-info/licenses/LICENSE",
+          "sha256": "e93716da6b9c0d5a4a1df60fe695b370f0695603d21f6f83f053e42cfc10caf7"
+        }
+      ],
+      "source_urls": [
+        "Source, https://github.com/certifi/python-certifi"
+      ],
+      "package_url": "https://pypi.org/project/certifi/2026.10.19/",
+      "license_expression": "MPL-2.0"
+    },
+    {
+      "name": "charset-normalizer",
+      "version": "3.5.2",
+      "wheel": "charset_normalizer-3.5.2-cp313-cp313-macosx_10_13_universal2.whl",
+      "wheel_sha256": "6045373d5a89a5ec71afde535db987ca28e76dfa276c2d4c818265b375d4b055",
+      "license_files": [
+        {
+          "path": "charset_normalizer-3.5.2.dist-info/licenses/LICENSE",
+          "sha256": "6d0d41bfe170ac6c7dc248c9a63e254d0fb45a60d50a8257d0af92c6e249b887"
+        }
+      ],
+      "source_urls": [
+        "Changelog, https://github.com/jawah/charset_normalizer/blob/master/CHANGELOG.md",
+        "Documentation, https://charset-normalizer.readthedocs.io/",
+        "Code, https://github.com/jawah/charset_normalizer",
+        "Issue tracker, https://github.com/jawah/charset_normalizer/issues"
+      ],
+      "package_url": "https://pypi.org/project/charset-normalizer/3.5.2/",
+      "license_expression": "MIT"
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0",
+      "wheel": "h11-0.16.0-py3-none-any.whl",
+      "wheel_sha256": "63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86",
+      "license_files": [
+        {
+          "path": "h11-0.16.0.dist-info/licenses/LICENSE.txt",
+          "sha256": "37db5bb85926db28a427a25867f10b1232003aea1be69ccb851138adb8e6f361"
+        }
+      ],
+      "source_urls": [],
+      "package_url": "https://pypi.org/project/h11/0.16.0/",
+      "license_expression": "MIT"
+    },
+    {
+      "name": "httpcore",
+      "version": "1.0.9",
+      "wheel": "httpcore-1.0.9-py3-none-any.whl",
+      "wheel_sha256": "2d400746a40668fc9dec9810239072b40b4484b640a8c38fd654a024c7a1bf55",
+      "license_files": [
+        {
+          "path": "httpcore-1.0.9.dist-info/licenses/LICENSE.md",
+          "sha256": "fdcb59154c74cbaba16a11242f7740bea9f23d6feb5547917d8c5f94a80392a5"
+        }
+      ],
+      "source_urls": [
+        "Documentation, https://www.encode.io/httpcore",
+        "Homepage, https://www.encode.io/httpcore/",
+        "Source, https://github.com/encode/httpcore"
+      ],
+      "package_url": "https://pypi.org/project/httpcore/1.0.9/",
+      "license_expression": "BSD-3-Clause"
+    },
+    {
+      "name": "httpx",
+      "version": "0.28.1",
+      "wheel": "httpx-0.28.1-py3-none-any.whl",
+      "wheel_sha256": "d909fcccc110f8c7faf814ca82a9a4d816bc5a6dbfea25d6591d6985b8ba59ad",
+      "license_files": [
+        {
+          "path": "httpx-0.28.1.dist-info/licenses/LICENSE.md",
+          "sha256": "4ec59d544f12b5f539a3a716fd321ac58ccd8030b465221f2c880200cdf28d8d"
+        }
+      ],
+      "source_urls": [
+        "Changelog, https://github.com/encode/httpx/blob/master/CHANGELOG.md",
+        "Documentation, https://www.python-httpx.org",
+        "Homepage, https://github.com/encode/httpx",
+        "Source, https://github.com/encode/httpx"
+      ],
+      "package_url": "https://pypi.org/project/httpx/0.28.1/",
+      "license_expression": "BSD-3-Clause"
+    },
+    {
+      "name": "idna",
+      "version": "3.20",
+      "wheel": "idna-3.20-py3-none-any.whl",
+      "wheel_sha256": "ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c",
+      "license_files": [
+        {
+          "path": "idna-3.20.dist-info/licenses/LICENSE.md",
+          "sha256": "1a9a4f0e3d479a27240ddd59a9137a66ab4a0f9dfdc8ca6188cc0bfd85187f04"
+        }
+      ],
+      "source_urls": [
+        "Changelog, https://github.com/kjd/idna/blob/master/HISTORY.md",
+        "Issue tracker, https://github.com/kjd/idna/issues",
+        "Source, https://github.com/kjd/idna"
+      ],
+      "package_url": "https://pypi.org/project/idna/3.20/",
+      "license_expression": "BSD-3-Clause"
+    },
+    {
+      "name": "lark-oapi",
+      "version": "1.7.4",
+      "wheel": "lark_oapi-1.7.4-py3-none-any.whl",
+      "wheel_sha256": "7b39f7a862faecc94e574df21ad668b8aa005a3f5caa6e4580d05139a72c84e2",
+      "license_files": [
+        {
+          "path": "lark_oapi-1.7.4.dist-info/licenses/LICENSE",
+          "sha256": "376660213aca675cae7ea55d7e6af88b130fa78a89fe5cbed7f61e0acdf0f949"
+        }
+      ],
+      "source_urls": [
+        "Source, https://github.com/larksuite/oapi-sdk-python"
+      ],
+      "package_url": "https://pypi.org/project/lark-oapi/1.7.4/",
+      "license_expression": "MIT"
+    },
+    {
+      "name": "pycryptodome",
+      "version": "4.1.0",
+      "wheel": "pycryptodome-4.1.0-cp39-abi3-macosx_10_9_universal2.whl",
+      "wheel_sha256": "1c3a054ab2552f25a941d6cd6380d9c0618ad0274f48773407b6bf5cd37bc90f",
+      "license_files": [
+        {
+          "path": "pycryptodome-4.1.0.dist-info/licenses/LICENSE.rst",
+          "sha256": "2e066558628eb4d6b28b72cc1471dc3aba02cecb2f962e40aa049c6460e20858"
+        },
+        {
+          "path": "pycryptodome-4.1.0.dist-info/licenses/src/mldsa-native/LICENSE",
+          "sha256": "22f7173776d0a36d3f13ec1f45d51e0502e67d17e384bddf39690d833974ff93"
+        }
+      ],
+      "source_urls": [
+        "Homepage, https://www.pycryptodome.org",
+        "Source, https://github.com/Legrandin/pycryptodome/",
+        "Changelog, https://www.pycryptodome.org/src/changelog"
+      ],
+      "package_url": "https://pypi.org/project/pycryptodome/4.1.0/",
+      "license_expression": "BSD-2-Clause AND Unlicense AND MIT"
+    },
+    {
+      "name": "requests",
+      "version": "2.34.2",
+      "wheel": "requests-2.34.2-py3-none-any.whl",
+      "wheel_sha256": "2a0d60c172f83ac6ab31e4554906c0f3b3588d37b5cb939b1c061f4907e278e0",
+      "license_files": [
+        {
+          "path": "requests-2.34.2.dist-info/licenses/LICENSE",
+          "sha256": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b"
+        },
+        {
+          "path": "requests-2.34.2.dist-info/licenses/NOTICE",
+          "sha256": "f5110972dedad2b4e9d314518daf3b7d72d6e02e499acd802181de6f74571dcc"
+        }
+      ],
+      "source_urls": [
+        "Documentation, https://requests.readthedocs.io",
+        "Source, https://github.com/psf/requests"
+      ],
+      "package_url": "https://pypi.org/project/requests/2.34.2/",
+      "license_expression": "Apache-2.0"
+    },
+    {
+      "name": "requests-toolbelt",
+      "version": "1.0.0",
+      "wheel": "requests_toolbelt-1.0.0-py2.py3-none-any.whl",
+      "wheel_sha256": "cccfdd665f0a24fcf4726e690f65639d272bb0637b9b92dfd91a5568ccf6bd06",
+      "license_files": [
+        {
+          "path": "requests_toolbelt-1.0.0.dist-info/AUTHORS.rst",
+          "sha256": "57df198f62c9098aac95c9b8ec1f0b8efc024080f61d5a0ed89ef4c5da3cf031"
+        },
+        {
+          "path": "requests_toolbelt-1.0.0.dist-info/LICENSE",
+          "sha256": "1f8cf8bdacd98ed6d36d0fec0c07f7765acebd6e81205962ab5146023b3c858d"
+        }
+      ],
+      "source_urls": [
+        "Changelog, https://github.com/requests/toolbelt/blob/master/HISTORY.rst",
+        "Source, https://github.com/requests/toolbelt"
+      ],
+      "package_url": "https://pypi.org/project/requests-toolbelt/1.0.0/",
+      "license_expression": "Apache-2.0"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "wheel": "typing_extensions-4.16.0-py3-none-any.whl",
+      "wheel_sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+      "license_files": [
+        {
+          "path": "typing_extensions-4.16.0.dist-info/licenses/LICENSE",
+          "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
+        }
+      ],
+      "source_urls": [
+        "Bug Tracker, https://github.com/python/typing_extensions/issues",
+        "Changes, https://github.com/python/typing_extensions/blob/main/CHANGELOG.md",
+        "Documentation, https://typing-extensions.readthedocs.io/",
+        "Home, https://github.com/python/typing_extensions",
+        "Q & A, https://github.com/python/typing/discussions",
+        "Repository, https://github.com/python/typing_extensions"
+      ],
+      "package_url": "https://pypi.org/project/typing_extensions/4.16.0/",
+      "license_expression": "PSF-2.0"
+    },
+    {
+      "name": "urllib3",
+      "version": "2.8.0",
+      "wheel": "urllib3-2.8.0-py3-none-any.whl",
+      "wheel_sha256": "0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3",
+      "license_files": [
+        {
+          "path": "urllib3-2.8.0.dist-info/licenses/LICENSE.txt",
+          "sha256": "130e3a64d5fdd5d096a752694634a7d9df284469de86e5732100268041e3d686"
+        }
+      ],
+      "source_urls": [
+        "Changelog, https://github.com/urllib3/urllib3/blob/main/CHANGES.rst",
+        "Documentation, https://urllib3.readthedocs.io",
+        "Code, https://github.com/urllib3/urllib3",
+        "Issue tracker, https://github.com/urllib3/urllib3/issues",
+        "Security policy, https://urllib3.readthedocs.io/en/latest/security.html"
+      ],
+      "package_url": "https://pypi.org/project/urllib3/2.8.0/",
+      "license_expression": "MIT"
+    },
+    {
+      "name": "websockets",
+      "version": "15.0.1",
+      "wheel": "websockets-15.0.1-cp313-cp313-macosx_11_0_arm64.whl",
+      "wheel_sha256": "746ee8dba912cd6fc889a8147168991d50ed70447bf18bcda7039f7d2e3d9151",
+      "license_files": [
+        {
+          "path": "websockets-15.0.1.dist-info/LICENSE",
+          "sha256": "3d6a0c050d8bec52fabad502e45fb25bd02bcadbd70dea34d447b6a0ff4e6da8"
+        }
+      ],
+      "source_urls": [
+        "Homepage, https://github.com/python-websockets/websockets",
+        "Changelog, https://websockets.readthedocs.io/en/stable/project/changelog.html",
+        "Documentation, https://websockets.readthedocs.io/",
+        "Funding, https://tidelift.com/subscription/pkg/pypi-websockets?utm_source=pypi-websockets&utm_medium=referral&utm_campaign=readme",
+        "Tracker, https://github.com/python-websockets/websockets/issues"
+      ],
+      "package_url": "https://pypi.org/project/websockets/15.0.1/",
+      "license_expression": "BSD-3-Clause"
+    }
+  ],
+  "external_tools": [
+    {
+      "name": "codex-license",
+      "ref": "rust-v0.162.1",
+      "url": "https://github.com/openai/codex/blob/rust-v0.162.1/LICENSE",
+      "blob_sha": "4606e72e042564097e8780d66c1d4dcb611869bd",
+      "sha256": "d17f227e4df5da1600391338865ce0f3055211760a36688f816941d58232d8dc",
+      "license_heading": [
+        "Apache License",
+        "Version 2.0, January 2004"
+      ]
+    },
+    {
+      "name": "codex-notice",
+      "ref": "rust-v0.162.1",
+      "url": "https://github.com/openai/codex/blob/rust-v0.162.1/NOTICE",
+      "blob_sha": "2805899d56d0332d175cfc613c67d45d6f006db7",
+      "sha256": "9d71575ecfd9a843fc1677b0efb08053c6ba9fd686a0de1a6f5382fd3c220915",
+      "license_heading": [
+        "OpenAI Codex",
+        "Copyright 2025 OpenAI"
+      ]
+    },
+    {
+      "name": "wsl-license",
+      "ref": "3.0.3",
+      "url": "https://github.com/microsoft/WSL/blob/3.0.3/LICENSE",
+      "blob_sha": "9e841e7a26e4eb057b24511e7b92d42b257a80e5",
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "license_heading": [
+        "MIT License",
+        "Copyright (c) Microsoft Corporation."
+      ]
+    },
+    {
+      "name": "checkout-license",
+      "ref": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "url": "https://github.com/actions/checkout/blob/3d3c42e5aac5ba805825da76410c181273ba90b1/LICENSE",
+      "blob_sha": "a67dca8b4f65d6bd351f6b1e333ce2cd84d843a5",
+      "sha256": "3e855ffa704114a51628ef8f0bf3aeb41728adf9d9070e263bf58aa5640b0eb5",
+      "license_heading": [
+        "The MIT License (MIT)",
+        "Copyright (c) 2018 GitHub, Inc. and contributors"
+      ]
+    },
+    {
+      "name": "setup-python-license",
+      "ref": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+      "url": "https://github.com/actions/setup-python/blob/6d4fd22b20465ccc0f7354476588e8df7c9ca0e0/LICENSE",
+      "blob_sha": "a426ef259d6c5d705e9c1405075c3b318093c65e",
+      "sha256": "7d070f6b64d9bcc530fe99cc21eaaa4b3c364e0b2d367d7735671fa202a03b32",
+      "license_heading": [
+        "The MIT License (MIT)",
+        "Copyright (c) 2018 GitHub, Inc. and contributors"
+      ]
+    },
+    {
+      "name": "python-container-source-license",
+      "ref": "master",
+      "url": "https://github.com/docker-library/python/blob/master/LICENSE",
+      "blob_sha": "fbab368db562ae869e297da8a9a430afca076cde",
+      "sha256": "0a3ffdfc4f368b76ae1140b5fbe2f2f69ee76ee00a3024e8a09ca9b2e265186f",
+      "license_heading": [
+        "Copyright (c) 2014 Docker, Inc.",
+        "Permission is hereby granted, free of charge, to any person obtaining"
+      ]
+    }
+  ]
+}
