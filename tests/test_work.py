@@ -77,6 +77,18 @@ class WorkTests(unittest.TestCase):
         with self.assertRaisesRegex(Rejected, 'work_capability_changed'):
             self.receive(value, kind='continue', reference='first')
 
+    def test_permission_refresh_during_read_keeps_the_verified_historical_grant(self):
+        d=echo_descriptor();d['actors'].append(dict(self.origin['actor'],user='bob'))
+        current=Registry({'schema':1,'entries':[d]});replacement=Registry({'schema':1,'entries':[d]})
+        original=current.descriptor
+        def refresh(value,binding=None):
+            result=original(value,binding)
+            self.work.registry=replacement
+            return result
+        current.descriptor=refresh;self.work.registry=current
+        with self.db.connect() as db:
+            self.assertEqual(self.work.get(db,self.first['item'],self.origin['actor'],'thread-a')['id'],self.first['item'])
+
     def test_unknown_and_completed_work_never_reopens_automatically(self):
         for state, action in [('unknown', 'reconcile'), ('stopping', 'reconcile'), ('completed', 'clarify')]:
             with self.db.connect() as db: self.work.observe(db, self.first['item'], state)

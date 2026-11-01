@@ -95,20 +95,25 @@ def execute_once(client, host):
     claim = client.call("/v1/claim", {"executor": "offline-host"})
     if not claim:
         return False
+    execute_claim(client, host, claim)
+    return True
+
+
+def execute_claim(client, host, claim, *, heartbeat_interval=10):
+    """Complete this accepted lease once; never claim again on failure."""
     binding = {k: claim[k] for k in ("execution", "executor", "lease", "binding")}
     client.call("/v1/progress", dict(binding, seq=1, phase="started"))
     stop, failures = threading.Event(), []
     def heartbeat():
-        while not stop.wait(10):
+        while not stop.wait(heartbeat_interval):
             try: client.call("/v1/heartbeat", binding)
             except Exception: failures.append("heartbeat_unknown"); return
     sender = threading.Thread(target=heartbeat, daemon=True); sender.start()
     try: result = host.execute(claim)
     finally: stop.set(); sender.join(timeout=9)
-    if failures: raise Rejected("execution_heartbeat_unknown_no_replay")
+    if failures or sender.is_alive(): raise Rejected("execution_heartbeat_unknown_no_replay")
     client.call("/v1/progress", dict(binding, seq=2, phase="verified"))
     client.call("/v1/result", dict(binding, result=result))
-    return True
 
 
 def run_transport(client, root, registry=None, events=None, timeout=60):

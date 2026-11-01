@@ -332,7 +332,8 @@ class Host(Database):
 
     def execute(self, claim, adapter=None):
         value = envelope(claim["event"])
-        self.registry.verify_binding(value, claim["binding"])
+        registry = self.registry
+        registry.verify_binding(value, claim["binding"])
         digest = fingerprint(claim)
         with self.connect() as db:
             db.execute("BEGIN IMMEDIATE")
@@ -345,8 +346,11 @@ class Host(Database):
                 raise Rejected("host_unknown_requires_reconciliation")
             db.execute("INSERT INTO executions VALUES(?,?,'running',NULL)", (claim["execution"], digest))
         try:
-            result = self.registry.execute(value, claim["binding"], adapter)
-        except Exception:
+            result = registry.execute(value, claim["binding"], adapter)
+            # Publication may replace the registry while a pinned handler is
+            # running. Recheck current authority before recording its result.
+            self.registry.result(value, claim["binding"], result)
+        except BaseException:
             with self.connect() as db:
                 db.execute("UPDATE executions SET status='unknown' WHERE id=?", (claim["execution"],))
             raise

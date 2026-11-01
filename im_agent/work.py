@@ -39,6 +39,7 @@ class WorkItems:
         self.registry = registry
 
     def get(self, db, item, who, thread):
+        registry = self.registry
         actor(who); identifier(item); identifier(thread)
         row = db.execute("SELECT * FROM work_items WHERE id=? AND actor=? AND thread=?",
                          (item, canonical(who), thread)).fetchone()
@@ -48,13 +49,13 @@ class WorkItems:
         origin = json.loads(row['origin'])
         # Current policy is checked before loading a historical contract. A
         # new registration's actor list may change without revoking this actor.
-        self.registry.descriptor(origin)
+        registry.descriptor(origin)
         saved = db.execute('SELECT descriptor FROM work_grants WHERE contract=?', (grant['contract'],)).fetchone()
         if saved is None: raise Rejected('work_grant_unavailable')
         historical = Registry({'schema': 1, 'entries': [json.loads(saved[0])]})
         if grant['contract'] not in historical.versions: raise Rejected('work_grant_binding_changed')
-        self.registry.versions[grant['contract']] = historical.versions[grant['contract']]
-        contract, selected = self.registry.descriptor(origin, {'contract': grant['contract']})
+        registry.versions[grant['contract']] = historical.versions[grant['contract']]
+        contract, selected = registry.descriptor(origin, {'contract': grant['contract']})
         if Registry._binding(contract, selected) != grant['execution']:
             raise Rejected('work_grant_binding_changed')
         return dict(row)
