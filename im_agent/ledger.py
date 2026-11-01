@@ -35,8 +35,9 @@ class Database:
 
 
 class Worker(Database):
-    def __init__(self, path, registry=None, *, receipt_kind="offline"):
+    def __init__(self, path, registry=None, *, receipt_kind="offline", claim_guard=None):
         self.registry = registry or Registry()
+        self.claim_guard = claim_guard
         self.registration_lock = threading.RLock()
         super().__init__(path, "worker-v1")
         from .delivery import bind_receipts
@@ -115,6 +116,23 @@ class Worker(Database):
         return {"status": row["status"], "binding": json.loads(row["binding"]),
                 "result": json.loads(row["result"]) if row["result"] else None}
 
+    def cancel_queued(self, job, parent):
+        """Cancel an internal request only before any executor has claimed it.
+
+        A stop of running/unknown work still requires the executor's protocol
+        and reconciliation. This worker-local command is not a model tool.
+        """
+        identifier(job); identifier(parent)
+        with self.registration_lock, self.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            row = db.execute('SELECT * FROM jobs WHERE id=? AND parent=?', (job, parent)).fetchone()
+            if row is None: raise Rejected('internal_job_missing')
+            self.registry.verify_binding(json.loads(row['payload']), json.loads(row['binding']))
+            if row['status'] == 'cancelled': return {'cancelled': True}
+            if row['status'] != 'queued' or row['execution'] is not None: return {'cancelled': False}
+            db.execute("UPDATE jobs SET status='cancelled' WHERE id=? AND status='queued' AND execution IS NULL", (job,))
+            return {'cancelled': True}
+
     def _ingress(self, value, parent):
         envelope(value)
         digest = fingerprint(value)
@@ -138,7 +156,14 @@ class Worker(Database):
             db.execute("BEGIN IMMEDIATE")
             # Expiry means execution may have happened. Never turn it into queued.
             db.execute("UPDATE jobs SET status='unknown' WHERE status='running' AND expires<?", (now,))
-            row = db.execute("SELECT * FROM jobs WHERE status='queued' ORDER BY rowid LIMIT 1").fetchone()
+            row = None
+            for candidate in db.execute("SELECT * FROM jobs WHERE status='queued' ORDER BY rowid"):
+                if self.claim_guard is not None:
+                    allowed = self.claim_guard(json.loads(candidate['payload']), candidate['parent'])
+                    if type(allowed) is not bool: raise Rejected('claim_guard_invalid')
+                    if not allowed: continue
+                row = candidate
+                break
             if not row:
                 return None
             execution, lease = uuid.uuid4().hex, uuid.uuid4().hex

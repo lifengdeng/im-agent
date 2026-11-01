@@ -59,6 +59,7 @@ python3 -B scripts/init_instance.py demo --instance-dir ../my-agent-instance --r
 - [实例接入清单](docs/实例接入清单.md)
 - [Windows 环境准备](docs/Windows环境准备.md)
 - [架构决策](docs/架构决策.md)
+- [事项协调与异步执行边界](docs/事项协调.md)
 - [开发规范](DEVELOPMENT.md)与[源码检查](docs/治理检查.md)
 - [维护与发布](docs/维护与发布.md)、[部署边界](DEPLOYMENT.md)与[离线常驻部署](docs/PC常驻离线部署.md)
 - [第三方组件](docs/第三方组件.md)
