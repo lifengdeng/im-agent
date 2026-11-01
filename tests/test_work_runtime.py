@@ -65,6 +65,25 @@ class RuntimeTests(unittest.TestCase):
             r=rules.propose(db,'readonly-rule',self.source('new'),'case')
             self.assertIsNone(Proactive([policy('shadow')]).claim(db,r['id']))
 
+    def test_explicit_case_budgets_allow_independent_work_without_replenishing_unknown(self):
+        rules=Proactive([dict(policy(),budget_scope='case')])
+        with self.db.connect() as db:
+            for key in ['first','second']:
+                row=rules.propose(db,'readonly-rule',self.source(key),'case-a',now=100)
+                self.assertEqual(row['state'],'queued')
+            with self.assertRaises(Rejected):rules.propose(db,'readonly-rule',self.source('second'),'case-b',now=100)
+            rules.claim(db,row['id']);rules.recover(db)
+            self.assertEqual(rules.propose(db,'readonly-rule',self.source('third'),'case-a',now=101)['state'],'budget_exhausted')
+            self.assertEqual(rules.propose(db,'readonly-rule',self.source('other'),'case-b',now=101)['state'],'queued')
+            self.assertEqual(rules.propose(db,'readonly-rule',self.source('later'),'case-a',now=3701)['state'],'queued')
+
+    def test_policy_budget_remains_global_and_unknown_budget_scope_is_rejected(self):
+        with self.assertRaises(Rejected):Proactive([dict(policy(),budget_scope='actor')])
+        rules=Proactive([policy()])
+        with self.db.connect() as db:
+            for i in range(2):rules.propose(db,'readonly-rule',self.source(str(i)),'case-a',now=100)
+            self.assertEqual(rules.propose(db,'readonly-rule',self.source('third'),'case-b',now=101)['state'],'budget_exhausted')
+
     def test_verified_result_and_current_policy_binding(self):
         with self.db.connect() as db:
             rules=Proactive([policy()]);r=rules.propose(db,'readonly-rule',self.source(),'case')

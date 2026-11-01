@@ -57,7 +57,9 @@ class Proactive:
         self.policies = {}
         for policy in policies:
             required = {'id','revision','source','kinds','capability','mode','hourly_budget'}
-            if (not isinstance(policy,dict) or set(policy)!=required or policy['mode'] not in {'off','shadow','enabled'}
+            if (not isinstance(policy,dict) or not required<=set(policy) or set(policy)-required-{'budget_scope'}
+                    or policy['mode'] not in {'off','shadow','enabled'}
+                    or policy.get('budget_scope','policy') not in {'policy','case'}
                     or type(policy['hourly_budget']) is not int or not 1<=policy['hourly_budget']<=16
                     or not isinstance(policy['kinds'],list) or not 1<=len(policy['kinds'])<=8):
                 raise Rejected('proactive_policy_invalid')
@@ -76,10 +78,14 @@ class Proactive:
         if policy['source'] != event['source'] or event['kind'] not in policy['kinds'] or policy['mode']=='off': return None
         key = fingerprint([policy,event['actor'],event['id']])
         prior = db.execute('SELECT * FROM proactive_candidates WHERE id=?', (key,)).fetchone()
-        if prior: return dict(prior)
+        if prior:
+            if prior['case_key']!=case_key: raise Rejected('proactive_case_binding_changed')
+            return dict(prior)
         state = 'shadow' if policy['mode']=='shadow' else 'queued'
-        used = db.execute("SELECT COUNT(*) FROM proactive_candidates WHERE policy=? AND created>? AND state IN ('queued','running','ready','unknown')",
-                          (canonical(policy),now-3600)).fetchone()[0]
+        scope=case_key if policy.get('budget_scope')=='case' else None
+        used = db.execute("""SELECT COUNT(*) FROM proactive_candidates WHERE policy=? AND created>?
+            AND (? IS NULL OR case_key=?) AND state IN ('queued','running','ready','unknown')""",
+                          (canonical(policy),now-3600,scope,scope)).fetchone()[0]
         if state=='queued' and used>=policy['hourly_budget']: state='budget_exhausted'
         db.execute('INSERT INTO proactive_candidates VALUES(?,?,?,?,?,?,NULL)',
                    (key,case_key,canonical(policy),canonical(event),state,now))
