@@ -35,7 +35,7 @@ class Database:
 
 
 class Worker(Database):
-    def __init__(self, path, registry=None, *, receipt_kind="offline", claim_guard=None):
+    def __init__(self, path, registry=None, *, receipt_kind="offline", claim_guard=None, capability_additions=None):
         self.registry = registry or Registry()
         self.claim_guard = claim_guard
         self.registration_lock = threading.RLock()
@@ -59,6 +59,22 @@ class Worker(Database):
             saved = db.execute("SELECT * FROM registry_state").fetchone()
             if saved:
                 active = Registry(json.loads(saved["payload"]))
+                missing = set(self.registry.active) - set(active.active)
+                if missing and capability_additions:
+                    if not set(active.active) <= set(self.registry.active) or not missing <= set(capability_additions):
+                        raise Rejected('registered_capability_addition_rejected')
+                    for key in active.active:
+                        if Registry.policy(active.versions[active.active[key]]) != Registry.policy(self.registry.versions[self.registry.active[key]]):
+                            raise Rejected('registered_authority_changed')
+                    for key in missing:
+                        base = capability_additions[key]
+                        if base not in active.active or key[0] != base[0]: raise Rejected('registered_capability_addition_rejected')
+                        old, new = active.versions[active.active[base]], self.registry.versions[self.registry.active[key]]
+                        if any(old.get(k) != new.get(k) for k in ['project','actors','group_scopes']):
+                            raise Rejected('registered_addition_scope_changed')
+                        contract = active.add(new)
+                        db.execute('INSERT OR IGNORE INTO registrations VALUES(?,?)', (contract, canonical(new)))
+                    db.execute('UPDATE registry_state SET generation=generation+1,payload=?', (canonical(active.declarations()),))
                 restored = Registry(active.declarations())
                 for row in db.execute("SELECT descriptor FROM registrations ORDER BY contract"): restored.add(json.loads(row[0]))
                 # Initial trusted declarations are the authority ceiling, even after restart.

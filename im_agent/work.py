@@ -121,7 +121,7 @@ class WorkItems:
     def bind_run(db, item, run, kind, binding):
         """An immutable reference to an accepted execution, never a new attempt."""
         identifier(item); identifier(run)
-        if kind not in {"conversation", "native"} or not isinstance(binding, dict) or not binding:
+        if kind not in {"conversation", "native", "proactive"} or not isinstance(binding, dict) or not binding:
             raise Rejected("work_run_invalid")
         owner = db.execute("SELECT state FROM work_items WHERE id=?", (item,)).fetchone()
         if owner is None:
